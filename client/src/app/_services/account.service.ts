@@ -1,3 +1,4 @@
+import { environment } from './../../environments/environment';
 import { User } from './../_models/user';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -11,7 +12,7 @@ import { ReplaySubject } from 'rxjs';
 //** Services are singleton, it means will not destroyed unless our application is closed or we move from our application */
 /** Component are not singleton and they get destroyed once we move from one component to another */
 export class AccountService {
-  baseUrl = 'https://localhost:5001/api/';
+  baseUrl = environment.apiUrl;
   private currentUserSource = new ReplaySubject<User | null>(1);
   currentUser$ = this.currentUserSource.asObservable();
 
